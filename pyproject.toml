@@ -40,8 +40,9 @@ build-backend = "flit_core.buildapi"
 
 
 [tool.pylint]
-ignore-paths = "^\.official/.*"extension-pkg-whitelist = ["numpy"]
+extension-pkg-whitelist = ["numpy"]
 jobs = 16                           #detect number of cores
+# ignore-paths = "^\.official/.*"
 
 
 [tool.pylint.'MESSAGES CONTROL']
