@@ -1,8 +1,11 @@
 import csv
 from typing import Any
 
-Record = dict[str, Any]
+###
+# Why is this code not very cohesive? How can you refactor it to increase cohesion?
+###
 
+Record = dict[str, Any]
 
 def main() -> None:
     with open("data.csv") as f:
