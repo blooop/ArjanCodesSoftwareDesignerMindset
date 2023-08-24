@@ -1,5 +1,5 @@
 [project]
-name = "python_template"
+name = "arjan_codes_sw_design_mindset"
 version = "0.0.1"
 
 authors = [{ name = "Austin Gregg-Smith", email = "blooop@gmail.com" }]
@@ -29,12 +29,12 @@ test = [
 ]
 
 [project.urls]
-Source = "https://github.com/blooop/python_template"
-Home = "https://github.com/blooop/python_template"
+Source = "https://github.com/blooop/arjan_codes_sw_design_mindset"
+Home = "https://github.com/blooop/arjan_codes_sw_design_mindset"
 
 
 [tool.flit.module]
-name = "python_template"
+name = "arjan_codes_sw_design_mindset"
 
 [build-system]
 requires = ["flit_core >=3.2,<4"]

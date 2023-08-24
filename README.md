@@ -1,4 +1,4 @@
-# python_template
+# arjan_codes_sw_design_mindset
 A template repo for python projects
 
 ## Continuous Integration Status
@@ -12,6 +12,6 @@ A template repo for python projects
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://www.python.org/downloads/release/python-310/)
 
 
-To set up your project, use ctrl+shift+h to relace all instances of "python_template" with your package name.
+To set up your project, use ctrl+shift+h to relace all instances of "arjan_codes_sw_design_mindset" with your package name.
 
 To update the readme find replace "blooop/ArjanCodesSoftwareDesignerMindset" with your repo username and name.
