@@ -1,0 +1,5 @@
+name,status,is_active
+John,active,True
+Sarah,inactive,False
+Alex,active,True
+Mike,inactive,False
