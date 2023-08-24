@@ -7,6 +7,7 @@ from typing import Any
 
 Record = dict[str, Any]
 
+
 def main() -> None:
     with open("data.csv") as f:
         reader = csv.DictReader(f)
