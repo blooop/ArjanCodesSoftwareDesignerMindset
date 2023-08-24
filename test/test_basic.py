@@ -1,4 +1,4 @@
-from python_template.basic_class import BasicClass
+from arjan_codes_sw_design_mindset.basic_class import BasicClass
 
 from unittest import TestCase
 
