@@ -22,7 +22,5 @@ def find_files(
     query: str,
     max_result: int,
 ) -> list[str]:
-    response = cloud_provider.filter_by_query(
-        bucket=bucket_name, query=query, max=max_result
-    )
+    response = cloud_provider.filter_by_query(bucket=bucket_name, query=query, max=max_result)
     return response["result"]["data"][0]

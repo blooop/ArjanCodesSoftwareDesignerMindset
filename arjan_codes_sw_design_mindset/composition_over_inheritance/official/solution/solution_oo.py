@@ -9,9 +9,7 @@ VIDEO_BUCKET = "video-backup.arjancodes.com"
 REGION = "eu-west-1c"
 
 
-def create_cloud_provider(
-    region: str = REGION, bucket_name: str = VIDEO_BUCKET
-) -> ACCloud:
+def create_cloud_provider(region: str = REGION, bucket_name: str = VIDEO_BUCKET) -> ACCloud:
     authentication = GoogleAuth("service_key.json")
     cloud = CloudProvider(
         region=region,
