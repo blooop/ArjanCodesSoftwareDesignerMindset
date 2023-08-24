@@ -15,12 +15,12 @@ Exercises for Arjan Codes Software Designer Mindset course
 
 Repo structure:
 
-exercise1
-    username1
-    username2
-exercise2
-    username1
-    username3
+* exercise1
+    * username1
+    * username2
+* exercise2
+    * username1
+    * username3
 
 
 For each exercise add a folder with your username.
