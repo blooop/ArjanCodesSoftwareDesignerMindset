@@ -9,5 +9,5 @@ class CloudProvider:
         self.http_auth = http_auth
         self.secure = secure
 
-    def filter_by_query(self, bucket: str, query: str, max: int) -> QueryResult:
+    def filter_by_query(self, bucket: str, query: str, max_val: int) -> QueryResult:
         return {"result": {"data": ["some data"]}}

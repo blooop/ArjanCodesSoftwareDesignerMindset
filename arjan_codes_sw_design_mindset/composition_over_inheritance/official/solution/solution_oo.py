@@ -26,6 +26,6 @@ class ACCloud:
 
     def find_files(self, query: str, max_result: int) -> list[str]:
         response = self.cloud_provider.filter_by_query(
-            bucket=self.bucket_name, query=query, max=max_result
+            bucket=self.bucket_name, query=query, max_val=max_result
         )
         return response["result"]["data"][0]
