@@ -16,9 +16,11 @@ Exercises for Arjan Codes Software Designer Mindset course
 Repo structure:
 
 * exercise1
+    * problem_definition
     * username1
     * username2
 * exercise2
+    * problem_definition
     * username1
     * username3
 
