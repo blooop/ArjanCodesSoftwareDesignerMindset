@@ -45,9 +45,7 @@ def read_kms_to_drive() -> int:
     """Reads the number of kilometers to drive from the user."""
     km = 0
     while km < 1:
-        km_str = input(
-            "How many kilometers would you like to drive (enter a positive number)? "
-        )
+        km_str = input("How many kilometers would you like to drive (enter a positive number)? ")
         try:
             km = int(km_str)
         except ValueError:
@@ -65,7 +63,6 @@ def compute_rental_cost(vehicle_type: str, days: int, km: int) -> int:
 
 
 def main():
-
     vehicle_type = read_vehicle_type()
 
     days = read_rent_days()
