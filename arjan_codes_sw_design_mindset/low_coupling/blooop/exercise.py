@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 
 from typing import List
+
+
 @dataclass
 class VehicleData:
     """A class to hold vehicle data."""
@@ -9,7 +11,7 @@ class VehicleData:
     price_per_day: int
     price_per_km: int
 
-    def compute_rental_cost( days: int, km: int) -> int:
+    def compute_rental_cost(self, days: int, km: int) -> int:
         """Computes the rental cost for a vehicle."""
         price_per_km = self.price_per_km
         price_per_day = self.price_per_day
@@ -24,7 +26,7 @@ VEHICLE_DATA = {
 }
 
 
-def read_vehicle_type(veh_types:List[str]) -> str:
+def read_vehicle_type(veh_types: List[str]) -> str:
     """Reads the vehicle type from the user."""
     vehicle_type = ""
     while vehicle_type not in veh_types:
@@ -58,8 +60,6 @@ def read_kms_to_drive() -> int:
         except ValueError:
             print("Invalid input. Please enter a number.")
     return km
-
-
 
 
 def main():
