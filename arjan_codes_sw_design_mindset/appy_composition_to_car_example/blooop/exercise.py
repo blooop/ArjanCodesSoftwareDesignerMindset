@@ -22,7 +22,7 @@ class Price(Protocol):
 
 @dataclass
 class PerItem:
-    number: int=1
+    number: int = 1
 
     def price_per(self, item):
         return self.number * item
@@ -30,7 +30,7 @@ class PerItem:
 
 @dataclass
 class PricePerDay(PerItem):
-    price_per_day: int=100
+    price_per_day: int = 100
 
     def compute_price(self):
         return self.price_per(self.price_per_day)
@@ -38,7 +38,7 @@ class PricePerDay(PerItem):
 
 @dataclass
 class PricePerMonth(PerItem):
-    price_per_month: int=100
+    price_per_month: int = 100
 
     def compute_price(self):
         return self.price_per(self.price_per_month)
@@ -46,7 +46,7 @@ class PricePerMonth(PerItem):
 
 @dataclass
 class PricePerKm(PerItem):
-    price_per_km: int=1
+    price_per_km: int = 1
 
     def compute_price(self):
         return self.price_per(self.price_per_km)
@@ -59,23 +59,22 @@ class Vehicle:
     color: str
     fuel_type: FuelType
     license_plate: str
-    reserved: bool=False
+    reserved: bool = False
     prices: list[Price] = field(default_factory=list)
 
     def compute_price(self) -> int:
-        return sum([p.compute_price() for p in self.prices])
-
+        return sum(p.compute_price() for p in self.prices)
 
 
 @dataclass
 class Car(Vehicle):
-    number_of_seats: int=5
-    storage_capacity_litres: int =200
+    number_of_seats: int = 5
+    storage_capacity_litres: int = 200
 
 
 @dataclass
 class Truck(Vehicle):
-    cab_style: TruckCabStyle= TruckCabStyle.REGULAR
+    cab_style: TruckCabStyle = TruckCabStyle.REGULAR
 
 
 @dataclass
