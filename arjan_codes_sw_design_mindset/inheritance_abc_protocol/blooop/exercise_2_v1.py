@@ -16,21 +16,20 @@ class HTMLElement:
         return (parent_x + self.x, parent_y + self.y)
 
 
-
 @dataclass
 class Div(HTMLElement):
     pass
 
-@dataclass
-class Button(HTMLElement):   
 
+@dataclass
+class Button(HTMLElement):
     def click(self) -> None:
         print("Click!")
 
 
 @dataclass
-class Span(HTMLElement):   
-    text: str=""
+class Span(HTMLElement):
+    text: str = ""
 
 
 def main() -> None:
