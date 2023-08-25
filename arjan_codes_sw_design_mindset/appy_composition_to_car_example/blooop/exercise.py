@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum, auto
+from typing import Protocol
 
 
 class FuelType(Enum):
@@ -14,6 +15,43 @@ class TruckCabStyle(Enum):
     CREW = auto()
 
 
+class Price(Protocol):
+    def compute_price(self):
+        ...
+
+
+@dataclass
+class PerItem:
+    number: int=1
+
+    def price_per(self, item):
+        return self.number * item
+
+
+@dataclass
+class PricePerDay(PerItem):
+    price_per_day: int=100
+
+    def compute_price(self):
+        return self.price_per(self.price_per_day)
+
+
+@dataclass
+class PricePerMonth(PerItem):
+    price_per_month: int=100
+
+    def compute_price(self):
+        return self.price_per(self.price_per_month)
+
+
+@dataclass
+class PricePerKm(PerItem):
+    price_per_km: int=1
+
+    def compute_price(self):
+        return self.price_per(self.price_per_km)
+
+
 @dataclass
 class Vehicle:
     brand: str
@@ -21,35 +59,23 @@ class Vehicle:
     color: str
     fuel_type: FuelType
     license_plate: str
-    reserved: bool
+    reserved: bool=False
+    prices: list[Price] = field(default_factory=list)
 
+    def compute_price(self) -> int:
+        return sum([p.compute_price() for p in self.prices])
 
-@dataclass
-class VehiclePerDay(Vehicle):
-    price_per_km: int
-    price_per_day: int
-
-
-@dataclass
-class VehiclePerMonth(Vehicle):
-    price_per_month: int
 
 
 @dataclass
-class CarPerDay(VehiclePerDay):
-    number_of_seats: int
-    storage_capacity_litres: int
-
-
-@dataclass
-class CarPerMonth(VehiclePerMonth):
-    number_of_seats: int
-    storage_capacity_litres: int
+class Car(Vehicle):
+    number_of_seats: int=5
+    storage_capacity_litres: int =200
 
 
 @dataclass
 class Truck(Vehicle):
-    cab_style: TruckCabStyle
+    cab_style: TruckCabStyle= TruckCabStyle.REGULAR
 
 
 @dataclass
@@ -57,36 +83,34 @@ class Trailer:
     brand: str
     model: str
     capacity_m3: int
-    price_per_month: int
     reserved: bool
 
 
 def main():
     # Example of a car that you can rent per day
-    ford = CarPerDay(
+    ford = Car(
         brand="Ford",
         model="Fiesta",
         color="red",
         fuel_type=FuelType.PETROL,
         license_plate="ABC-123",
         reserved=False,
-        price_per_km=10,
-        price_per_day=50,
         number_of_seats=5,
         storage_capacity_litres=300,
+        prices=[PricePerKm(10), PricePerDay(50)],
     )
     print(ford)
     # Example of a car that you can rent per month
-    tesla = CarPerMonth(
+    tesla = Car(
         brand="Tesla",
         model="Model 3",
         color="black",
         fuel_type=FuelType.ELECTRIC,
         license_plate="DEF-456",
         reserved=False,
-        price_per_month=1000,
         number_of_seats=5,
         storage_capacity_litres=300,
+        prices=[PricePerMonth(1000)],
     )
     print(tesla)
 
