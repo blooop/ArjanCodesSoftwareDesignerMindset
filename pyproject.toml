@@ -42,7 +42,7 @@ build-backend = "flit_core.buildapi"
 [tool.pylint]
 extension-pkg-whitelist = ["numpy"]
 jobs = 16                           #detect number of cores
-# ignore-paths = "^\.official/.*"
+# ignore-patterns = "**/official/**/*.py"
 
 
 [tool.pylint.'MESSAGES CONTROL']
@@ -55,6 +55,7 @@ line-length = 100
 [tool.ruff]
 # Never enforce `E501` (line length violations).
 ignore = ["E501", "E902"]
+exclude = ["**/official/**"]
 
 # Same as Black.
 line-length = 100
@@ -80,5 +81,5 @@ exclude_also = [
   "raise AssertionError",
   "raise NotImplementedError",
   "if __name__ == .__main__.:",
-  "..."
+  "...",
 ]
