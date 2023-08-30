@@ -11,10 +11,8 @@ class VehicleData:
 
     def compute_rental_cost(self, km: int, days: int) -> int:
         """Computes the rental cost for a vehicle."""
-        price_per_km = self.price_per_km
-        price_per_day = self.price_per_day
         paid_kms = max(km - 100, 0)
-        return price_per_km * paid_kms + price_per_day * days
+        return self.price_per_km * paid_kms + self.price_per_day * days
 
 
 VEHICLE_TYPES = ["vw", "bmw", "ford"]
