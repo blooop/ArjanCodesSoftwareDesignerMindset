@@ -1,21 +1,24 @@
 from enum import Enum, auto
 from dataclasses import dataclass
 
+
 class PaymentStatus(Enum):
     """Payment status"""
 
     OPEN = auto()
     PAID = auto()
 
+
 @dataclass
 class OrderEntry:
     item: str
     quantity: int
-    price : int
+    price: int
 
     @property
     def total_price(self):
         return self.quantity * self.price
+
 
 class Order:
     def __init__(self):
