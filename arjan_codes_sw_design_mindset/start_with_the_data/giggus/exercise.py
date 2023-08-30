@@ -16,7 +16,7 @@ class OrderEntry:
     price: int
 
     @property
-    def total_price(self):
+    def total_price(self) -> int:
         return self.quantity * self.price
 
 
