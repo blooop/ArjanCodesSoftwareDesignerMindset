@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import Protocol
 
 
-class Credientials(Protocol):
-    ...
+class Credientials:
+    pass
 
 
 class AuthProvider(Protocol):
@@ -11,15 +11,15 @@ class AuthProvider(Protocol):
         ...
 
 
-class ServiceContext(Protocol):
-    ...
+class ServiceContext:
+    pass
 
 
 class ServiceProvider(Protocol):
     def get_context(self) -> ServiceContext:
         ...
 
-    def connect(self, credential: Credientials):
+    def connect(self, credential: Credientials) -> None:
         ...
 
 
