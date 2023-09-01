@@ -1,13 +1,38 @@
 from dataclasses import dataclass
+from typing import Protocol
 
-from .google import GoogleCredentials, GoogleServiceProvider, GoogleStorage
+
+class Credientials(Protocol):
+    ...
+
+
+class AuthProvider(Protocol):
+    def retrieve_credentials(self) -> Credientials:
+        ...
+
+
+class ServiceContext(Protocol):
+    ...
+
+
+class ServiceProvider(Protocol):
+    def get_context(self) -> ServiceContext:
+        ...
+
+    def connect(self, credential: Credientials):
+        ...
+
+
+class StorageManger(Protocol):
+    def initialize(self, context: ServiceContext):
+        ...
 
 
 @dataclass
 class CloudService:
-    auth_provider: GoogleCredentials
-    service: GoogleServiceProvider
-    storage_manager: GoogleStorage
+    auth_provider: AuthProvider
+    service: ServiceProvider
+    storage_manager: StorageManger
 
     def connect(self) -> None:
         print("Connecting to the cloud service.")
