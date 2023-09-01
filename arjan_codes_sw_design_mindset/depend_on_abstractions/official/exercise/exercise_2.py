@@ -7,9 +7,7 @@ HOST = "smtp.arjancodes.com"
 PORT = 19584
 
 
-def send_email(
-    message: str, to_address: str, from_address: str = DEFAULT_EMAIL
-) -> None:
+def send_email(message: str, to_address: str, from_address: str = DEFAULT_EMAIL) -> None:
     server = SMTP()
     server.connect(HOST, PORT)
     server.login(LOGIN, PASSWORD)
