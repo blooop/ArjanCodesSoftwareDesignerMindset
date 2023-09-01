@@ -35,9 +35,7 @@ class EasyEnemyFactory(EnemyFactory):
 
 class MediumEnemyFactory(EnemyFactory):
     def spawn(self) -> Enemy:
-        enemy_type = random.choice(
-            [EnemyType.KNIGHT, EnemyType.ARCHER, EnemyType.WIZARD]
-        )
+        enemy_type = random.choice([EnemyType.KNIGHT, EnemyType.ARCHER, EnemyType.WIZARD])
         health = random.randint(40, 80)
         attack_power = random.randint(40, 60)
         defense = random.randint(20, 40)
