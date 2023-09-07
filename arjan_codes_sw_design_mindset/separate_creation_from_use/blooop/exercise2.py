@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from strenum import StrEnum
 from enum import auto
-from random import choice
 
 
 class EnemyType(StrEnum):
@@ -36,17 +35,24 @@ def spawn_hard(enemy_type: EnemyType):
     return Enemy(enemy_type, health=300, attack_power=500, defense=500)
 
 
-def spawn(spawn_type: SpawnType):
+enemy_mapping = {
+    SpawnType.EASY: [[EnemyType.ARCHER, EnemyType.KNIGHT]],
+    SpawnType.MEDIUM: [EnemyType.ARCHER, EnemyType.KNIGHT, EnemyType.WIZARD],
+    SpawnType.HARD: [EnemyType.WIZARD],
+}
+
+spawn_mapping = {
+    SpawnType.EASY: spawn_easy,
+    SpawnType.MEDIUM: spawn_medium,
+    SpawnType.HARD: spawn_hard,
+}
+
+
+def spawn(spawn_type: SpawnType, count: int = 1):
     enemies = []
-    match spawn_type:
-        case SpawnType.EASY:
-            enemies.append(spawn_easy(choice([EnemyType.ARCHER, EnemyType.KNIGHT])))
-        case SpawnType.MEDIUM:
-            enemies.append(
-                spawn_medium(choice([EnemyType.ARCHER, EnemyType.KNIGHT, EnemyType.WIZARD]))
-            )
-        case SpawnType.HARD:
-            enemies.append(spawn_hard(choice([EnemyType.WIZARD])))
+    for c in range(count):
+        print(f"spawning enemy {c}")
+        enemies.append(spawn_mapping[spawn_type](enemy_mapping[spawn_type]))
     for e in enemies:
         print(e)
     return enemies
