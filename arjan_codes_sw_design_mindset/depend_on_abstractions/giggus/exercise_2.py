@@ -28,5 +28,5 @@ def send_email(
 ) -> None:
     server.connect(HOST, PORT)
     server.login(LOGIN, PASSWORD)
-    server.sendmail(from_address, to_address, message)
+    server.send_mail(from_address, to_address, message)
     server.quit()
