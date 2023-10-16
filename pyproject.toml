@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 
 
-dependencies = ["numpy>=1.2,<=1.26.0", "strenum>=0.4.15,<=0.4.15"]
+dependencies = ["numpy>=1.2,<=1.26.1", "strenum>=0.4.15,<=0.4.15"]
 
 [project.optional-dependencies]
 test = [
