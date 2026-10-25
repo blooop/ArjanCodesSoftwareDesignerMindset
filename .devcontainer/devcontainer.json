@@ -1,17 +1,12 @@
 {
-    // Uses the template's prebuilt image by default for fast startup.
-    // To build locally: pixi run dev-use-local
-    // To use this repo's own prebuilt image: pixi run dev-use-prebuilt
-    // "build": {
-    //     "dockerfile": "Dockerfile",
-    //     "context": ".."
-    // },
+    // Uses the prebuilt image of blooop/python_template for fast startup.
+    // This repo has no Dockerfile and builds no image of its own.
     "image": "ghcr.io/blooop/python_template/devcontainer:latest",
 
     // There is deliberately no "features" block. The claude-code feature is
-    // already baked into the image above: .devcontainer/ci/devcontainer.json,
-    // which is the config CI builds that image from, declares
-    // "../claude-code". Declaring it again here made the devcontainer spec
+    // already baked into the image above: python_template's
+    // .devcontainer/ci/devcontainer.json, the config its CI builds that image
+    // from, declares "../claude-code". Declaring it again here made the devcontainer spec
     // build a derived image on the first launch of every branch, reinstalling
     // something the pulled image already carried -- so the "prebuilt image for
     // fast startup" above still paid for a build. With this block gone the
