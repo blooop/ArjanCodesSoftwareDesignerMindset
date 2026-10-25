@@ -81,3 +81,22 @@ exclude_also = [
   "raise NotImplementedError",
   "if __name__ == .__main__.:",
 ]
+
+# pixi supplies Python and the dev environment in the devcontainer
+# (ghcr.io/blooop/python_template/devcontainer has no pip-based Python setup).
+# The package build stays on flit, so CI and publishing do not change.
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.dependencies]
+python = "3.12.*"
+
+[tool.pixi.pypi-dependencies]
+arjan_codes_sw_design_mindset = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]
+test = "pytest"
