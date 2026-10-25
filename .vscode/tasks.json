@@ -3,24 +3,18 @@
 	"tasks": [
 		{
 			"label": "autoformat",
-			"detail": "Use ruff and black to automatically fix and format the code",
+			"detail": "Use ruff to automatically fix and format the code",
 			"type": "shell",
-			"command": "ruff . --fix && black ."
+			"command": "ruff check . --fix && ruff format ."
 		},
 		{
 			"label": "autoformat and commit",
-			"detail": "Use ruff and black to automatically fix and format the code and commit changes",
+			"detail": "Use ruff to automatically fix and format the code and commit changes",
 			"type": "shell",
 			"dependsOn": [
 				"autoformat"
 			],
 			"command": "git commit -a -m 'autoformatted and ruff --fix all code' || true"
-		},
-		{
-			"label": "pylint",
-			"detail": "Run pylint on files tracked by git",
-			"type": "shell",
-			"command": "pylint $(git ls-files '*.py') "
 		},
 		{
 			"label": "code coverage",
@@ -49,7 +43,6 @@
 			"type": "shell",
 			"dependsOn": [
 				"autoformat",
-				"pylint",
 				"code coverage report"
 			],
 			"dependsOrder": "sequence",
