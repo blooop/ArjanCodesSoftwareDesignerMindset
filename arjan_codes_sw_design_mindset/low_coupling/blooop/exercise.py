@@ -1,7 +1,5 @@
 from dataclasses import dataclass
 
-from typing import List
-
 
 @dataclass
 class VehicleData:
@@ -26,7 +24,7 @@ VEHICLE_DATA = {
 }
 
 
-def read_vehicle_type(veh_types: List[str]) -> str:
+def read_vehicle_type(veh_types: list[str]) -> str:
     """Reads the vehicle type from the user."""
     vehicle_type = ""
     while vehicle_type not in veh_types:

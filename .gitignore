@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 .vscode/active_file.cfg
+
+# pixi environments
+.pixi/

@@ -1,5 +1,4 @@
-from typing import Callable
-
+from collections.abc import Callable
 
 Retrieve = Callable[[], str]
 Connect = Callable[[], None]

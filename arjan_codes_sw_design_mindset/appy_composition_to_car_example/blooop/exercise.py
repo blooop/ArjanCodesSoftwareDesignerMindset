@@ -16,8 +16,7 @@ class TruckCabStyle(Enum):
 
 
 class Price(Protocol):
-    def compute_price(self):
-        ...
+    def compute_price(self): ...
 
 
 @dataclass

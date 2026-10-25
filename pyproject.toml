@@ -11,10 +11,8 @@ requires-python = ">=3.10"
 dependencies = ["numpy>=1.2,<=1.26.1", "strenum>=0.4.15,<=0.4.15"]
 [project.optional-dependencies]
 test = [
-  "black>=23,<=23.10.1",
   "check-manifest>=0.49,<=0.49",
   "pre-commit>=3.3.3,<=3.5.0",
-  "pylint>=2.16,<=3.0.2",
   "pytest-cov>=4.1,<=4.1",
   "pytest-mock>=3.10,<=3.12.0",
   "pytest-runner>=6.0,<=6.0",
@@ -37,26 +35,13 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 
-[tool.pylint]
-extension-pkg-whitelist = ["numpy"]
-jobs = 16                           #detect number of cores
-ignore-paths = [".*official.*"]
-
-[tool.pylint.'MESSAGES CONTROL']
-disable = "C,logging-fstring-interpolation,line-too-long,fixme,broad-exception-caught,missing-module-docstring,too-many-instance-attributes,too-few-public-methods,too-many-arguments,too-many-locals,too-many-branches,too-many-statements,use-dict-literal,cyclic-import,duplicate-code,too-many-public-methods,unused-argument,unspecified-encoding"
-enable = "no-else-return,consider-using-in"
-
-[tool.black]
-line-length = 100
-
 [tool.ruff]
 # Never enforce `E501` (line length violations).
-#"F841" will auto remove unused variables which is annoying during development, pylint catches this anyway
+#"F841" will auto remove unused variables which is annoying during development
 ignore = ["E501", "E902", "F841"]
 exclude = ["**/official/**"]
 
 
-# Same as Black.
 line-length = 100
 
 target-version = "py310"
@@ -81,3 +66,22 @@ exclude_also = [
   "raise NotImplementedError",
   "if __name__ == .__main__.:",
 ]
+
+# pixi supplies Python and the dev environment in the devcontainer
+# (ghcr.io/blooop/python_template/devcontainer has no pip-based Python setup).
+# The package build stays on flit, so CI and publishing do not change.
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.dependencies]
+python = "3.12.*"
+
+[tool.pixi.pypi-dependencies]
+arjan_codes_sw_design_mindset = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]
+test = "pytest"

@@ -1,6 +1,7 @@
+from collections.abc import Callable
 from dataclasses import dataclass
+
 from strenum import StrEnum
-from typing import Callable
 
 
 class EnemyType(StrEnum):

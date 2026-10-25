@@ -1,5 +1,5 @@
-from time import time
 from dataclasses import dataclass, field
+from time import time
 
 
 @dataclass
