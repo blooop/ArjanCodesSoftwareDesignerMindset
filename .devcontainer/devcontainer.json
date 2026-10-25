@@ -2,13 +2,11 @@
     // Uses the template's prebuilt image by default for fast startup.
     // To build locally: pixi run dev-use-local
     // To use this repo's own prebuilt image: pixi run dev-use-prebuilt
-    // "build" instead of the template's "image": this repo needs git-lfs,
-    // which the shared image lacks; see .devcontainer/Dockerfile.
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
-    },
-    // "image": "ghcr.io/blooop/python_template/devcontainer:latest",
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "context": ".."
+    // },
+    "image": "ghcr.io/blooop/python_template/devcontainer:latest",
 
     // There is deliberately no "features" block. The claude-code feature is
     // already baked into the image above: .devcontainer/ci/devcontainer.json,
