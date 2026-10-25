@@ -13,7 +13,7 @@ def weekday(today: datetime) -> str:
 
 
 def main() -> None:
-    print(f"Today is a {weekday(datetime.today())}")
+    print(f"Today is a {weekday(datetime.today())}")  # noqa: DTZ002
     print(f"Your id = {generate_id(10)}")
 
 
